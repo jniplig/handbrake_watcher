@@ -64,8 +64,10 @@ class MKVHandler(FileSystemEventHandler):
         if event.is_directory:
             return
         if event.src_path.lower().endswith(".mkv"):
+            print(f"[DEBUG] New MKV file detected: {event.src_path}")
             time.sleep(5)
             run_handbrake(Path(event.src_path))
+
 
 def create_icon_image():
     img = Image.new("RGB", (64, 64), "black")
